@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--引入vue-->
+    <script src="../../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+         <!-- v-model 双向绑定-->
+         姓: <input type="text" v-model="firstName" />
+         <br/><br/>
+         名: <input type="text" v-model="lastName"/>
+         <br/><br/>
+         <!-- methods 方法调用之后进行差值-->
+         <!-- data 中的数据发生变化的话，要重新解析和 react 类似，state 一变化页面重新 render-->
+         全名: <span>{{ fullName() }}</span>
+    </div>
+    <script type="text/javascript">
+        new Vue({
+            data() {
+                return {
+                    firstName: 'xiao',
+                    lastName: 'mi'
+                }
+            },
+            methods: {
+                fullName() {
+                    return `${this.firstName} -- ${this.lastName}`
+                }
+            }
+        }).$mount('#root');
+    </script>
+</body>
+</html>

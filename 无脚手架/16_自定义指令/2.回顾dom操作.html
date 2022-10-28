@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../js/vue.js"></script>
+</head>
+<body>
+    <button id="btn">点我创建一个输入框</button>
+    <script type="text/javascript">
+        const btn = document.querySelector('#btn');
+        btn.onclick = () => {
+            const input = document.createElement('input');
+            input.className = 'demo';
+            input.value = '100';
+            input.onclick = () => alert('hello vue');
+            console.log(input.parentElement); // 此时它的 parentElement 属性是 null, 无法获取, 因为它并不在 dom 树中
+
+            // 将该 input 插入到 dom 树中
+            document.body.appendChild(input);
+            // input 出现的时候，让其自动获取焦点
+            // 注意一定要在 input 框被放到 dom 树中再运行 focus 函数，否则它将无法自动获取焦点
+            // 一定要放到 dom 树中
+            input.focus();
+            input.parentElement.style.background = 'skyblue';
+        }
+    </script>
+</body>
+</html>

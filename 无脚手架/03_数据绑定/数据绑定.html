@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- 引入 vue -->
+    <script src="../../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <label>
+            单项数据绑定:
+            <input type="text" v-bind:value="name">
+            <!--简写-->
+            <input type="text" :value="name">
+        </label>
+        <label>
+            双向数据绑定:
+            <input type="text" v-model="name">
+        </label>
+        <!--
+            不是什么都可以用 v-model，比如不支持 h1
+            v-model 只能应用在表单元素上(输入元素), 与用户交互(都有共同的value属性)
+        -->
+        <h1 x-bind:x="name">你好</h1>
+    </div>
+    <script type="text/javascript">
+        new Vue({
+            el: '#root',
+            data: {
+                name: 'kino'
+            }
+        });
+    </script>
+</body>
+</html>

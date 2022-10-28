@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--引入vue-->
+    <script src="../../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <!-- v-model 双向绑定-->
+        姓: <input type="text" v-model="firstName" />
+        <br/><br/>
+        名: <input type="text" v-model="lastName"/>
+        <br/><br/>
+        全名: <span>{{ firstName }} - {{ lastName }}</span>
+    </div>
+    <script type="text/javascript">
+        new Vue({
+            data() {
+                return {
+                    firstName: 'zhang',
+                    lastName: 'san'
+                }
+            }
+        }).$mount('#root');
+    </script>
+</body>
+</html>

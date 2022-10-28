@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../js/vue.js"></script>
+</head>
+<body>
+    <!--
+        1. 关于组件名:
+            一个单词组成: 
+                第一种写法: school
+                第二种写法: School
+            多个单词组成:
+                第一种写法: my-school
+                第二种写法: MySchool(需要 Vue 脚手架支持)
+            备注:
+                ① 组件名尽可能回避 HTML 中已有的元素名称，例如: h2、H2 都不行。
+                ② 可以使用 name 配置项指定组件在开发者工具中呈现的名字。
+        2. 关于组件标签
+            第一种写法: <school></school>
+            第二种写法: <school/>
+            备注: 不用使用脚手架时， <school/> 会导致后续组件不能渲染。
+        3. 一个简写方式:
+            const school = Vue.extend(options) 可简写为: const school = options
+    -->
+    <div id="root">
+        <h2>{{ msg }}</h2>
+        <hello></hello>
+        <school></school>
+    </div>
+    <script type="text/javascript">
+        const s = Vue.extend({
+            template: `
+                <div>
+                    <h2>学校名称: {{ name }}</h2>
+                    <h2>学校地址: {{ address }}</h2>
+                </div>
+            `,
+            data() {
+                return {
+                    name: '武汉大学',
+                    address: '武汉'
+                }
+            },
+            name: 'test' // 该配置是指组件在开发者工具中指定的名称
+        });
+        //创建组件的简写
+        const hello = {
+            template: `
+                <div>
+                    <h2>hello - {{ msg }}</h2>
+                </div>
+            `,
+            data() {
+                return {
+                    msg: 'vue'
+                }
+            },
+        }
+        new Vue({
+            data() {
+                return {
+                    
+                }
+            },
+            components: {
+                school: s,
+                hello
+            }
+        }).$mount('#root');
+    </script>
+</body>
+</html>

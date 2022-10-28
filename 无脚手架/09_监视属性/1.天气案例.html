@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--引入vue-->
+    <script src="../../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <h1>今天天气很 {{ info }}</h1>
+        <button @click="changeWeather">切换</button>
+    </div>
+    <script type="text/javascript">
+        new Vue({
+            data() {
+                return {
+                    isHost: false
+                }
+            },
+            computed: {
+                info() {
+                    return this.isHost ? '炎热' : '凉爽';
+                }
+            },
+            // 改变模板数据的方法
+            methods: {
+                changeWeather() {
+                    this.isHost = !this.isHost;
+                }
+            }
+        }).$mount('#root')
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--引入 vue-->
+    <script src="../../js/vue.js"></script>
+</head>
+<body>
+    <!--
+        MVVM 模型
+            1. M: 模型(Model): data 中的数据
+            2. V: 视图(View): 模板代码
+            3. VM: 视图模型(ViewModel): Vue 实例
+    -->
+
+    <div id="root">
+        <!-- view -->
+        <h1>学校名称: {{ name }}</h1>
+        <h1>学校地址: {{ address }}</h1>
+        <h1>测试一下: {{ 1+1 }}</h1>
+        <hr>
+        <h1>测试一下2: {{ $options }}</h1>
+        <h1>测试一下3: {{ $emit }}</h1>
+        <h1>测试一下4: {{ _c }}</h1>
+    </div>
+    <script type="text/javascript">
+        new Vue({
+            data() {
+                return {
+                    name: '武汉大学',
+                    address: '武汉'
+                }
+            }
+        }).$mount('#root');
+    </script>
+</body>
+</html>

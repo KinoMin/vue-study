@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--引入vue-->
+    <script src="../../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <h1>今天天气很 {{ info }}</h1>
+        <button @click="changeWeather">
+            切换
+        </button>
+        <hr/>   
+    </div>
+    <script type="text/javascript">
+        const vm = new Vue({
+            data() {
+                return {
+                    isHot: true
+                }
+            },
+            computed: {
+                info() {
+                    return this.isHot ? '炎热' : '凉爽';
+                }
+            },
+            methods: {
+                changeWeather() {
+                    this.isHot = !this.isHot;
+                }
+            }
+            // ,watch: {
+            //     // isHot: {
+            //     //     immediate: true,
+            //     //     handler(newValue, preValue) {
+            //     //         console.log('isHost 被修改了');
+            //     //         console.log(`newValue: ${newValue}, preValue: ${preValue}`);
+            //     //     }
+            //     // }
+            //     // 简写: 简写的前提是 watch 的属性不需要 immediate 和 deep 属性的时候
+            //     isHot(newValue, preValue) {
+            //         console.log('isHost 被修改了');
+            //         console.log(`newValue: ${newValue}, preValue: ${preValue}`);
+            //     }
+            // }
+        });
+        vm.$mount('#root');
+
+        // 完整写法
+        // vm.$watch('isHot', {
+        //     deep: true,
+        //     immediate: true,
+        //     handler(newValue, preValue) {
+        //         console.log('isHost 被修改了');
+        //         console.log(`newValue: ${newValue}, preValue: ${preValue}`);
+        //     }
+        // });
+        // 简写
+        vm.$watch('isHot', function(newValue, preValue){
+            // this == vm
+            console.log('isHost 被修改了');
+            console.log(`newValue: ${newValue}, preValue: ${preValue}`);
+        });
+    </script>
+</body>
+</html>

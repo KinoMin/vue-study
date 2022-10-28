@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--引入vue-->
+    <script src="../../js/vue.js"></script>
+</head>
+<body>
+    <!--
+        监视属性 watch:
+          1. 当被监视的属性变化时，回调函数自动调用，进行相关操作
+          2. 监视的属性必须存在，才能进行监视！！
+          3. 监视的两种方法：
+            (1): new Vue 时传入 watch 配置
+            (2): 通过 vm.$watch 监视
+    -->
+    <div id="root">
+        <h1>今天天气很 {{ info }}</h1>
+        <button @click="changeWeather">切换</button>
+    </div>
+    <script type="text/javascript">
+        const vm = new Vue({
+            data() {
+                return {
+                    isHot: false
+                }
+            },
+            computed: {
+                info() {
+                    return this.isHot ? '炎热' : '凉爽'
+                }
+            },
+            methods: {
+                changeWeather() {
+                    this.isHot = !this.isHot;
+                }
+            },
+            // watch 的第一种写法
+            watch: {
+                // 监视的配置对象
+                // watch 不仅能监视 data 的普通属性，也可以检测计算属性
+                isHot: {
+                    immediate: true,
+                    handler(newValue, preValue) {
+                        console.log('isHot 被修改了');
+                        console.log(`newValue: ${newValue}, preValue: ${preValue}`);
+                    }
+                }
+            }
+        });
+        vm.$mount('#root');
+        // watch 的第二种写法, 直接采用 vm 对象实例
+        // vm.$watch('isHot', {
+        //     immediate: true, // 当这个属性为 true 时，页面刚开始渲染就运行 handler 函数
+        //     // handler 什么时候调用呢
+        //     // 当 isHot 发生改变就会调用
+        //     // handler 接收两个参数，一个是这个状态参数改变前的值，另一个是改变后的旧值
+        //     handler(newValue, preValue) {
+        //         console.log('isHot 被修改了');
+        //         console.log(`newValue: ${newValue}, preValue: ${preValue}`);
+        //     }
+        // });
+    </script>
+</body>
+</html>

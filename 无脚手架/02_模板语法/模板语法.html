@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- 引入 vue -->
+    <script src="../../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <h1>插值语法</h1>
+        <h3>hello, {{ name }}</h3>
+        <hr>
+        <h1>指令语法</h1>
+        <a v-bind:href="url.toUpperCase()" v-bind:x="x">百度一下</a>
+        <a :href="url_taiwan" :x="x">google 台湾</a>
+        <p>学校: <a :href="school.url.toString()">{{ school.name }}</a></p>
+    </div>
+    <script type="text/javascript">
+        new Vue({
+            el: "#root",
+            data: {
+                name: 'kino',
+                url: 'https://www.baidu.com',
+                x: 'aaaaa',
+                url_taiwan: 'https://www.google.com/search?q=taiwan',
+                school: {
+                    name: '武汉大学',
+                    url: 'https://www.whu.edu.cn/'
+                }
+            }
+        });
+    </script>
+</body>
+</html>
