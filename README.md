@@ -1,2 +1,2 @@
 # vue-study
-vueu学习
+学习vue代码
