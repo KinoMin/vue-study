@@ -1,15 +1,18 @@
 <template>
-  <div class="app">
-    <Test1/>
+  <div class="container">
+    <Search/>
+    <List/>
   </div>
 </template>
 
 <script>
-import Test1 from './components/Test1';
+import Search from './components/Search';
+import List from './components/List';
 export default {
   name: 'App',
   components: {
-    Test1
+    Search,
+    List
   }
 }
 </script>
