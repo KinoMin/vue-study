@@ -10,9 +10,11 @@
           <!-- <a class="list-group-item active" href="./about.html">About</a> -->
           <!-- <a class="list-group-item" href="./home.html">Home</a> -->
 
-					<!-- Vue中借助router-link标签实现路由的切换 -->
-					<router-link class="list-group-item" active-class="active" to="/about">About</router-link>
+          <router-link class="list-group-item" active-class="active" to="/about">About</router-link>
           <router-link class="list-group-item" active-class="active" to="/home">Home</router-link>
+
+          
+
         </div>
       </div>
       <div class="col-xs-6">
@@ -28,9 +30,11 @@
 </template>
 
 <script>
-	import Banner from './components/Banner'
+  import Banner from './components/Banner'
 	export default {
 		name:'App',
-		components:{Banner}
+    components: {
+      Banner
+    }
 	}
 </script>
